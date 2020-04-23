@@ -21,15 +21,19 @@ popd
 ## initial run ##
 # build AGW from source; tab 1
 pushd .
+cd lte/gateway
 vagrant ssh magma
 cd magma/lte/gateway # MAGMA-VM
 make run             # MAGMA-VM
 popd
 
 # start orc8r; tab 2
+pushd .
+cd orc8r/cloud/docker
 docker-compose up -d
 ls ../../../.cache/test_certs
 open ../../../.cache/test_certs
+popd
 
 # connect lte gw to local cloud !?
 pushd .
